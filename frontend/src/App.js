@@ -82,16 +82,6 @@ function App() {
       {isAuthenticated && <UserOptions user={user} />}
 
       <Routes>
-        {
-          stripeApiKey && <Route exact path="/process/payment" element={
-            <Elements stripe={loadStripe(stripeApiKey)}>
-              <ProtectedRoute><Payment /></ProtectedRoute>
-            </Elements>
-            } />
-        }
-      </Routes>
-
-      <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
         <Route exact path="/products" element={<Products />} />
@@ -125,6 +115,14 @@ function App() {
         <Route exact path="/admin/user/:id" element={<ProtectedRoute isAdmin={true}> <UpdateUser /> </ProtectedRoute>} />
         <Route exact path="/admin/reviews" element={<ProtectedRoute isAdmin={true}> <ProductReviews /> </ProtectedRoute>} />
         
+        {
+          stripeApiKey && <Route exact path="/process/payment" element={
+            <Elements stripe={loadStripe(stripeApiKey)}>
+              <ProtectedRoute><Payment /></ProtectedRoute>
+            </Elements>
+            } />
+        }
+
         {/* Catch-all route for undefined paths */}
         <Route path="*" element={
           window.location.pathname === "/process/payment" ? null : <NotFound/>

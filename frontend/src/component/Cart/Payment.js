@@ -112,6 +112,8 @@ const Payment = () => {
         }
     };
 
+    console.log(window.location.pathname)
+
     useEffect(() => {
       if(error){
         alert.error(error);

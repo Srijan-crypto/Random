@@ -7,6 +7,7 @@ import { Rating } from '@mui/lab'
 const ProductCard = ({product}) => {
 
   const options = {
+    size: "medium",
     value: product.ratings,
     readOnly: true,
     precision: 0.5,

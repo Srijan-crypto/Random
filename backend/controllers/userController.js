@@ -90,10 +90,12 @@ exports.forgotPassword = catchAsyncErrors(async (req,res,next) => {
 
     const resetToken = user.getResetPasswordToken();
     await user.save({validateBeforeSave: false}); //to save the values after generating reset token and its expire value
-
+    // console.log(process.env.DEPLOYED_URL);
+    // console.log(process.env.PORT);
     const resetPasswordUrl = `${process.env.DEPLOYED_URL}/password/reset/${resetToken}`;
+    // console.log(resetPasswordUrl);
     const message = `Your password reset token is :- \n\n ${resetPasswordUrl} \n\nIf you have not requested this email then, please ignore it.`;
-
+    // console.log(message);
     try {
         await sendEmail({email:user.email, subject: "AllMart password recovery", message});
 

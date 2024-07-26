@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import MetaData from '../metaData'
 
 const NotFound = () => {
+  
   return (
     <>
     <MetaData title="404 Page Not Found"/>
