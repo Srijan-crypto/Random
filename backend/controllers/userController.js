@@ -91,7 +91,7 @@ exports.forgotPassword = catchAsyncErrors(async (req,res,next) => {
     const resetToken = user.getResetPasswordToken();
     await user.save({validateBeforeSave: false}); //to save the values after generating reset token and its expire value
 
-    const resetPasswordUrl = `${req.protocol}://${req.get("host")}/password/reset/${resetToken}`;
+    const resetPasswordUrl = `${process.env.DEPLOYED_URL}/password/reset/${resetToken}`;
     const message = `Your password reset token is :- \n\n ${resetPasswordUrl} \n\nIf you have not requested this email then, please ignore it.`;
 
     try {
