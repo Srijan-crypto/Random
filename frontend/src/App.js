@@ -124,9 +124,7 @@ function App() {
         }
 
         {/* Catch-all route for undefined paths */}
-        <Route path="*" element={
-          window.location.pathname === "/process/payment" ? null : <NotFound/>
-        } />
+        <Route path="*" element={<NotFound/>}/>
 
       </Routes>
       <Footer />
